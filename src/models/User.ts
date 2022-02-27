@@ -6,10 +6,8 @@ export default interface IUser {
 }
 
 const UserSchema = new Schema<IUser>({
-  username: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
 
-const User = model<IUser>("User", UserSchema);
-
-module.exports = User;
+export const User = model<IUser>("User", UserSchema);
