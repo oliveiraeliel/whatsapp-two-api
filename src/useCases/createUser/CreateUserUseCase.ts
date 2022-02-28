@@ -1,4 +1,4 @@
-import { User } from "../models/User";
+import { User } from "../../models/User";
 import { hash } from "bcryptjs";
 
 interface IUserRequest {
