@@ -1,30 +1,14 @@
-import { Message } from "../../models/Message";
-
-interface IExecute {
-  to: string;
-  from: string;
-}
+import { Chat } from "../../models/Chat";
 
 class GetMessageUse {
-  async getChatMessage({ to, from }: IExecute) {
-    const message = await Message.find({ to: to, from: from });
+  async getChatMessage(member: string) {
+    const message = await Chat.find({ members: { $in: [member] } });
 
     if (message === null) {
       throw new Error("This message does not exist");
     }
+    console.log(message);
 
-    return message;
-  }
-
-  async getAllMessages(_id: string) {
-    let message = await Message.find({ to: _id });
-
-    if (message === []) {
-      message = await Message.find({ from: _id });
-      if (message === []) {
-        throw new Error("Not found");
-      }
-    }
     return message;
   }
 }
