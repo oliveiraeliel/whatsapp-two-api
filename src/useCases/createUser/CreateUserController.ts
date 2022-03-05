@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { GenerateAuthToken } from "../generateAuthToken/generateAuthToken";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
 class CreateUserController {
@@ -9,7 +10,11 @@ class CreateUserController {
 
     const user = await createUserUseCase.execute({ username, password });
 
-    return response.json(user);
+    const _id = user._id.toString();
+    const generateAuthToken = new GenerateAuthToken();
+    const token = await generateAuthToken.generate(_id);
+
+    return response.json({ token: token, user: user.username });
   }
 }
 

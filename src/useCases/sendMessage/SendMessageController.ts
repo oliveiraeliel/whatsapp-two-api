@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { SendMessageUse } from "./SendMessageUse";
+import { SendMessageUseCase } from "./SendMessageUseCase";
 
 class SendMessageController {
   async handle(request: Request, response: Response) {
     const { members, messages } = request.body;
 
-    const sendMessageUse = new SendMessageUse();
+    const sendMessageUseCase = new SendMessageUseCase();
 
-    const Message = await sendMessageUse.execute({
+    const Message = await sendMessageUseCase.execute({
       members,
       messages,
     });

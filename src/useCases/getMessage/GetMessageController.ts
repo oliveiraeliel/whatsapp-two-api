@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { GetMessageUse } from "./GetMessageUse";
+import { GetMessageUseCase } from "./GetMessageUseCase";
 
 class GetMessageController {
   async handle(request: Request, response: Response) {
     const member = request.params.member;
-    const getMessageUse = new GetMessageUse();
-    const message = await getMessageUse.getChatMessage(member);
+    const getMessageUseCase = new GetMessageUseCase();
+    const message = await getMessageUseCase.getChatMessage(member);
     return response.json(message);
   }
 }

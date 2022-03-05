@@ -1,6 +1,6 @@
 import { Chat } from "../../models/Chat";
 
-class GetMessageUse {
+class GetMessageUseCase {
   async getChatMessage(member: string) {
     const message = await Chat.find({ members: { $in: [member] } });
 
@@ -13,4 +13,4 @@ class GetMessageUse {
   }
 }
 
-export { GetMessageUse };
+export { GetMessageUseCase };

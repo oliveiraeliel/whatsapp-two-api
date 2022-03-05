@@ -10,7 +10,7 @@ interface ISendMessage {
   messages: IMessageArray;
 }
 
-class SendMessageUse {
+class SendMessageUseCase {
   async execute({ members, messages }: ISendMessage) {
     const chat = await Chat.findOneAndUpdate(
       { members: members.sort },
@@ -34,4 +34,4 @@ class SendMessageUse {
   }
 }
 
-export { SendMessageUse };
+export { SendMessageUseCase };
